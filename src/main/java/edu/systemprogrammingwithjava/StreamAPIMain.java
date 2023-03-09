@@ -1,9 +1,7 @@
 package edu.systemprogrammingwithjava;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 public class StreamAPIMain {
@@ -59,5 +57,16 @@ public class StreamAPIMain {
                         ));
         sumByCountry.entrySet().stream().forEach(e -> System.out.println(e.getKey() + " : " + e.getValue()));
 
+        AtomicInteger counter = new AtomicInteger(0);
+        int listSize = 2;
+
+        Map<Integer, List<Account>> collectMap = accounts.stream().collect(Collectors.groupingBy(x -> counter.getAndIncrement() / listSize));
+
+        Collection<List<Account>> collectLists = accounts.stream().collect(Collectors.groupingBy(x -> counter.getAndIncrement() / listSize)).values();
+
+        collectLists.forEach(list1 -> {
+            System.out.println("");
+            list1.forEach(a1 -> System.out.println(a1.holderName));
+        });
     }
 }
