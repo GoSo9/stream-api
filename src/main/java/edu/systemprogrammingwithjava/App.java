@@ -14,16 +14,17 @@ public class App
         System.out.println( "System Programming with Java!" );
 
         // How to create a Stream
+        Stream<String> stream1 = Stream.empty();
+
         List<String> list = Arrays.asList("1","2");
-        Stream<String> stream1 = list.stream();
+        Stream<String> stream2 = list.stream();
 
-        Stream<String> stream2 = Stream.empty();
-
-        Map<String, String> hashMap = new HashMap();
+        Map<String, String> hashMap = new HashMap<>();
         hashMap.put("name1","System");
-        hashMap.put("name2","Programming");
+        hashMap.put("name2","Programing");
+        Stream<String> stream3 = hashMap.values().stream();
 
-        String[] strings = new String[]{"System","Programing"};
+        String[] strings = new String[]{"System","Programing","With","Java"};
         Stream<String> stream4 = Arrays.stream(strings);
 
         //Before Streams
@@ -44,7 +45,7 @@ public class App
             }
         };
 
-//        Predicate<String> filter1 = s -> s.length()>6;
+        //Predicate<String> filter1 = s -> s.length()>6;
 
         //stream4.filter(str -> str.length()>6).forEach(System.out::println);
 
